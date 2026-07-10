@@ -10,7 +10,7 @@
 
     <name>dream</name>
     <url>https://www.xxx.com</url>
-    <description>dream 版本管理</description>
+    <description>版本管理</description>
 
     <packaging>pom</packaging>
 
@@ -55,15 +55,6 @@
         <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
         <docker.image.prefix>${docker.repository}/w-docker</docker.image.prefix>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 
     <!-- 依赖管理 -->
     <dependencyManagement>
@@ -272,9 +263,12 @@
                 <version>${captcha.version}</version>
             </dependency>
 
-
-            <!--  系统内部公共模块-->
-
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
