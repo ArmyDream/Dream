@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dream</groupId>
+    <artifactId>dream</artifactId>
+    <version>${dream.version}</version>
+
+    <name>dream</name>
+    <url>https://www.xxx.com</url>
+    <description>Dream 管理系统</description>
+
+    <modules>
+        <!--        <module>dream-gateway</module>-->
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <dream.version>1.0.0</dream.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-cloud.version>2021.0.9</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.6.2</spring-cloud-alibaba.version>
+        <alibaba-nacos.version>2.3.2</alibaba-nacos.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
+        <spring-thymeleaf.version>2.7.18</spring-thymeleaf.version>
+        <spring-boot-admin.version>2.7.16</spring-boot-admin.version>
+        <redisson-spring.version>3.17.7</redisson-spring.version>
+        <lombok.version>1.18.46</lombok.version>
+        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson2.version>2.0.62</fastjson2.version>
+        <hutool.version>5.8.46</hutool.version>
+        <sa-token.version>1.45.0</sa-token.version>
+        <springdoc.version>1.8.0</springdoc.version>
+        <easyexcel.version>4.0.3</easyexcel.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <commons-pool2.version>2.11.1</commons-pool2.version>
+        <minio.version>8.6.0</minio.version>
+        <xxl-job.version>2.5.0</xxl-job.version>
+        <mybatis-plus.version>3.5.16</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.5.16</mybatis-plus-generator.version>
+        <mybatis-plus-datasource.version>4.5.0</mybatis-plus-datasource.version>
+        <velocity.version>2.4.1</velocity.version>
+        <commons-lang3.version>3.20.0</commons-lang3.version>
+        <oracle11-jdbc.version>21.21.0.0</oracle11-jdbc.version>
+        <oracle12-jdbc.version>23.26.2.0.0</oracle12-jdbc.version>
+        <mysql-connector.version>8.0.33</mysql-connector.version>
+        <druid-spring.version>1.2.28</druid-spring.version>
+        <jasypt-spring-boot.version>3.0.5</jasypt-spring-boot.version>
+        <captcha.version>1.4.0</captcha.version>
+        <easy-captcha.version>1.6.2</easy-captcha.version>
+        <tianai-captcha.version>1.5.5</tianai-captcha.version>
+        <!--        阿里云镜像库-->
+        <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
+        <docker.image.prefix>${docker.repository}/w-docker</docker.image.prefix>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <!--                <type>pom</type>-->
+                <!--                <scope>import</scope>-->
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <!--Redisson -boot 分布式锁 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring.version}</version>
+            </dependency>
+
+            <!-- easyexcel-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+
+            <!-- io 常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <!--        boot2.x之后，redis底层不再是jedis，而是lettuce,所以需要添加commons-pool2依赖-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <!-- JSON 解析器和生成器 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+
+            <!-- Spring Boot 2.x 如需替换默认 JSON 转换器 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension-spring5</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+
+            <!-- String 工具类 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- mybatis-plus-generator -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+
+            <!-- mybatis-plus-datasource 多数据源配置 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${mybatis-plus-datasource.version}</version>
+            </dependency>
+
+            <!-- velocity 代码生成模板 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
+            <!-- 使用 Thymeleaf -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>${spring-thymeleaf.version}</version>
+            </dependency>
+
+            <!-- 或使用 FreeMarker -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-freemarker</artifactId>
+                <version>${spring-thymeleaf.version}</version>
+            </dependency>
+
+            <!-- oracle jdbc -->
+            <dependency>
+                <groupId>com.oracle.jdbc</groupId>
+                <artifactId>ojdbc8</artifactId>
+                <version>${oracle11-jdbc.version}</version>
+            </dependency>
+
+            <!-- mysql-connector-java  mysql-connector-j(新坐标)一样-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <!--                <artifactId>mysql-connector-j</artifactId>-->
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
+            <!-- 阿里开源的数据库连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring.version}</version>
+            </dependency>
+
+            <!-- Hutool 工具类库 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-http</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- 文件对象存储
+            MinIO SDK 8.x 依赖 OkHttp 4.8.1 或更高版本。Spring Boot 2.7.x 可能引入 OkHttp 3.x 版本，如果启动报错，说明存在版本冲突，需要显式声明 OkHttp 4.x 版本来覆盖
+            -->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+
+            <!--   jasypty 敏感信息加密 核心注意: PBEWITHHMACSHA512ANDAES_256 3.0.0上默认使用此加密算法-->
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt-spring-boot.version}</version>
+            </dependency>
+
+            <!-- Sa-Token 权限认证，在线文档：https://sa-token.cc -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!-- xxl-job 任务调度 -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
+
+            <!-- easy-captcha 验证码 支持算术、中文、GIF等验证码-->
+            <dependency>
+                <groupId>com.github.whvcse</groupId>
+                <artifactId>easy-captcha</artifactId>
+                <version>${easy-captcha.version}</version>
+            </dependency>
+
+            <!-- tianai-captcha  验证码 不止是滑动拼图，还支持旋转验证码、滑动还原验证码、文字点选验证码等多种类型-->
+            <dependency>
+                <groupId>cloud.tianai.captcha</groupId>
+                <artifactId>tianai-captcha-springboot-starter</artifactId>
+                <version>${tianai-captcha.version}</version>
+            </dependency>
+
+            <!-- 验证码 滑动拼图和文字点选，还提供了 Vue、React、Android、iOS、Flutter、uni-app 等几乎全端的前端示例，非常适合需要覆盖多端的项目-->
+            <dependency>
+                <groupId>com.anji-plus</groupId>
+                <artifactId>spring-boot-starter-captcha</artifactId>
+                <version>${captcha.version}</version>
+            </dependency>
+
+
+            <!--  系统内部公共模块-->
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- compiler插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+
+                    <imageName>${docker.image.prefix}/${project.artifactId}:latest</imageName>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+
+                    <!--推送阿里云相关-->
+                    <!--与maven的setting文件中id 名称一致-->
+                    <serverId>docker-aliyun</serverId>
+                    <registryUrl>${docker.repository}</registryUrl>
+                    <pushImage>true</pushImage>
+
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2039815-release-lv0hzj/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2039815-snapshot-csFGud/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2039815-release-lv0hzj/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2039815-snapshot-csFGud/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
