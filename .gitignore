@@ -32,6 +32,8 @@ class/*.class
 /logs
 logs/
 rebel.xml
+.flattened*.xml
+.qoder
 
 **/src/main/**/*.jar
 

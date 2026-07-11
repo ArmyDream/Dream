@@ -6,7 +6,7 @@
 
     <groupId>com.dream</groupId>
     <artifactId>dream</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
 
     <name>dream</name>
     <url>https://www.xxx.com</url>
@@ -16,7 +16,8 @@
 
     <properties>
         <!-- 项目的统一版本号 -->
-        <revision>1.0.0</revision>
+        <dream.version>1.0.0</dream.version>
+        <revision>${dream.version}</revision>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
