@@ -29,6 +29,7 @@
         <spring-boot-admin.version>2.7.16</spring-boot-admin.version>
         <redisson-spring.version>3.17.7</redisson-spring.version>
         <lombok.version>1.18.46</lombok.version>
+        <slf4j-api.version>2.0.18</slf4j-api.version>
         <fastjson.version>1.2.83</fastjson.version>
         <fastjson2.version>2.0.62</fastjson2.version>
         <hutool.version>5.8.46</hutool.version>
@@ -38,6 +39,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-pool2.version>2.11.1</commons-pool2.version>
         <minio.version>8.6.0</minio.version>
+        <fastdfs.version>1.27.2</fastdfs.version>
         <xxl-job.version>2.5.0</xxl-job.version>
         <mybatis-plus.version>3.5.16</mybatis-plus.version>
         <mybatis-plus-generator.version>3.5.16</mybatis-plus-generator.version>
@@ -52,6 +54,10 @@
         <captcha.version>1.4.0</captcha.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
         <tianai-captcha.version>1.5.5</tianai-captcha.version>
+        <uuid-creator.version>6.1.1</uuid-creator.version>
+        <ulid-creator.version>5.2.4</ulid-creator.version>
+        <caffeine.version>2.9.3</caffeine.version>
+
         <!--        阿里云镜像库-->
         <docker.repository>registry.cn-hangzhou.aliyuncs.com</docker.repository>
         <docker.image.prefix>${docker.repository}/w-docker</docker.image.prefix>
@@ -60,11 +66,31 @@
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
+            <!-- SpringCloud 微服务 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- SpringCloud Alibaba 微服务 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- SpringBoot 依赖配置 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
@@ -214,6 +240,13 @@
                 <version>${minio.version}</version>
             </dependency>
 
+            <!-- FastDFS 文件上传 -->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastdfs.version}</version>
+            </dependency>
+
             <!--   jasypty 敏感信息加密 核心注意: PBEWITHHMACSHA512ANDAES_256 3.0.0上默认使用此加密算法-->
             <dependency>
                 <groupId>com.github.ulisesbocchio</groupId>
@@ -262,11 +295,40 @@
                 <version>${captcha.version}</version>
             </dependency>
 
+            <!-- UUID Creator：专业的 UUID 生成库，支持 UUIDv1-v7 -->
+            <dependency>
+                <groupId>com.github.f4b6a3</groupId>
+                <artifactId>uuid-creator</artifactId>
+                <version>${uuid-creator.version}</version>
+            </dependency>
+
+            <!-- ULID Creator（支持 ULID） -->
+            <dependency>
+                <groupId>com.github.f4b6a3</groupId>
+                <artifactId>ulid-creator</artifactId>
+                <version>${ulid-creator.version}</version>
+            </dependency>
+
+            <!-- caffeine 缓存 -->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+
+            <!-- Lombok（覆盖 spring-boot-dependencies 中的版本） -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <!-- 日志-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
             </dependency>
 
         </dependencies>

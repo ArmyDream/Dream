@@ -72,6 +72,11 @@
             <appender-ref ref="consoleLog"/>
             <appender-ref ref="fileInfoLog"/>
             <appender-ref ref="fileErrorLog"/>
+
+            <!-- 可选：针对特定包的日志级别调整 -->
+            <logger name="com.dream" level="debug"/>
+            <!--            <logger name="org.springframework.web" level="debug"/>-->
+            <!--            <logger name="org.mybatis" level="debug"/>-->
         </root>
     </springProfile>
 
@@ -88,6 +93,10 @@
         <!--        <appender-ref ref="consoleLog"/>-->
         <appender-ref ref="fileInfoLog"/>
         <appender-ref ref="fileErrorLog"/>
+
+        <!-- 可选：针对特定包的日志级别调整 -->
+        <logger name="com.dream" level="debug"/>
+
     </root>
 
 </configuration>
