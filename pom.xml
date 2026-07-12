@@ -29,7 +29,9 @@
         <spring-boot-admin.version>2.7.16</spring-boot-admin.version>
         <redisson-spring.version>3.17.7</redisson-spring.version>
         <lombok.version>1.18.46</lombok.version>
+        <logback.version>1.3.16</logback.version>
         <slf4j-api.version>2.0.18</slf4j-api.version>
+        <log4j-to-slf4j.version>2.26.1</log4j-to-slf4j.version>
         <fastjson.version>1.2.83</fastjson.version>
         <fastjson2.version>2.0.62</fastjson2.version>
         <hutool.version>5.8.46</hutool.version>
@@ -316,7 +318,6 @@
                 <version>${caffeine.version}</version>
             </dependency>
 
-            <!-- Lombok（覆盖 spring-boot-dependencies 中的版本） -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -324,12 +325,53 @@
                 <scope>provided</scope>
             </dependency>
 
-            <!-- 日志-->
+          <!--  &lt;!&ndash; Lombok（覆盖 spring-boot-dependencies 中的版本） &ndash;&gt;
+
+
+            &lt;!&ndash; ===== SLF4J 全家桶 ===== &ndash;&gt;
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j-api.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
+                <version>${log4j-to-slf4j.version}</version>
+            </dependency>
+
+            &lt;!&ndash; logback 的依赖配置&ndash;&gt;
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>-->
+
 
         </dependencies>
     </dependencyManagement>
@@ -380,6 +422,24 @@
             </plugin>
 
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
     </build>
 
     <repositories>
