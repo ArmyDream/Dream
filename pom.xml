@@ -37,7 +37,7 @@
         <fastjson.version>1.2.83</fastjson.version>
         <fastjson2.version>2.0.62</fastjson2.version>
         <hutool.version>5.8.46</hutool.version>
-        <sa-token.version>1.45.0</sa-token.version>
+        <sa-token.version>1.46.0</sa-token.version>
         <springdoc.version>1.8.0</springdoc.version>
         <easyexcel.version>4.0.3</easyexcel.version>
         <!-- Apache Commons Compress 1.21：支持 zip/tar/7z/gzip/bzip2/xz 等多种压缩格式，JDK 8 兼容 -->
