@@ -182,6 +182,13 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!-- mybatis-plus-extension：提供 ServiceImpl / IService 等扩展能力（3.5.17 不由 boot-starter 传递） -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
             <!-- mybatis-plus-generator -->
             <dependency>
                 <groupId>com.baomidou</groupId>
