@@ -36,7 +36,7 @@
         <log4j-to-slf4j.version>2.26.1</log4j-to-slf4j.version>
         <fastjson.version>1.2.83</fastjson.version>
         <fastjson2.version>2.0.62</fastjson2.version>
-        <hutool.version>5.8.46</hutool.version>
+        <hutool.version>5.8.47</hutool.version>
         <sa-token.version>1.46.0</sa-token.version>
         <springdoc.version>1.8.0</springdoc.version>
         <easyexcel.version>4.0.3</easyexcel.version>
