@@ -52,6 +52,8 @@
         <mybatis-plus.version>3.5.17</mybatis-plus.version>
         <mybatis-plus-generator.version>3.5.17</mybatis-plus-generator.version>
         <mybatis-plus-datasource.version>4.5.0</mybatis-plus-datasource.version>
+<!--        多租户 jSQLParser：5.0+ 要求 Java 11，JDK 8 环境下最新稳定版为 4.9 -->
+        <jsqlparser.version>4.9</jsqlparser.version>
         <velocity.version>2.4.1</velocity.version>
         <commons-lang3.version>3.20.0</commons-lang3.version>
         <oracle11-jdbc.version>21.21.0.0</oracle11-jdbc.version>
@@ -201,6 +203,13 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${mybatis-plus-datasource.version}</version>
+            </dependency>
+
+            <!-- 多租户 jSQLParser：TenantInterceptor SQL 改写依赖（版本统一在 properties 管理）-->
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
             </dependency>
 
             <!-- velocity 代码生成模板 -->
