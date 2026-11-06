@@ -191,6 +191,19 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!--
+                mybatis-plus 官方 SQL 解析插件：PaginationInnerInterceptor / TenantLineInnerInterceptor /
+                DataPermissionInterceptor 等内部拦截器所在模块（3.5.9 起从 mybatis-plus-extension 拆出）。
+                必须用 -4.9 变体：常规版 mybatis-plus-jsqlparser 依赖 jsqlparser 5.2 且按 Java 11 编译
+                （class major 55），本项目 java.version=1.8 加载会 UnsupportedClassVersionError；
+                -4.9 变体锁 jsqlparser 4.9（class major 52），与上面 jsqlparser.version 保持一致。
+            -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-jsqlparser-4.9</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
             <!-- mybatis-plus-generator -->
             <dependency>
                 <groupId>com.baomidou</groupId>
